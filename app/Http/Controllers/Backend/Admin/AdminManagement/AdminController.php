@@ -10,12 +10,12 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        return $this->middleware('admin');
-    }
+    // public function __construct()
+    // {
+    //     return $this->middleware('admin');
+    // }
 
-    use DetailsCommonDataTrait;
+    // use DetailsCommonDataTrait;
     /**
      * Display a listing of the resource.
      */
