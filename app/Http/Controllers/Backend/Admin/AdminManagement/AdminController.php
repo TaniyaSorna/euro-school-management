@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Backend\Admin\AdminManagement;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AdminRequest;
+use App\Http\Traits\DetailsCommonDataTrait;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use App\Http\Traits\DetailsCommonDataTrait;
 
 class AdminController extends Controller
 {
-    // public function __construct()
-    // {
-    // return $this->middleware('admin');
-    // }
+    public function __construct()
+    {
+        return $this->middleware('admin');
+    }
 
-    // use DetailsCommonDataTrait;
+    use DetailsCommonDataTrait;
     /**
      * Display a listing of the resource.
      */
