@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Backend\Admin\DashboardController;
+use App\Http\Controllers\Backend\Admin\AdminManagement\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,4 +12,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Admin Login Routes
+Route::controller(AdminLoginController::class)->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', 'adminLogin')->name('login');
+    Route::post('/login', 'adminLoginCheck')->name('login');
+    Route::post('/logout', 'logout')->name('logout');
+});
+
+
+
+Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
+
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
+    // Admin Management
+    Route::group(['as' => 'am.', 'prefix' => 'admin-management'], function () {
+        Route::resource('admin', AdminController::class);
+        Route::get('admin/status/{admin}', [AdminController::class, 'status'])->name('admin.status');
+    });
+});
