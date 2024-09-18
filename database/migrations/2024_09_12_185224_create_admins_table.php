@@ -8,6 +8,7 @@ use App\Http\Traits\AuditColumnsTrait;
 
 return new class extends Migration
 {
+    use AuditColumnsTrait, SoftDeletes;
     /**
      * Run the migrations.
      */
@@ -27,7 +28,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
-            // $this->addAdminAuditColumns($table);
+            $this->addAdminAuditColumns($table);
         });
     }
 

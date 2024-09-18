@@ -9,6 +9,7 @@ use App\Http\Traits\AuditColumnsTrait;
 
 return new class extends Migration
 {
+    use AuditColumnsTrait, SoftDeletes;
     /**
      * Run the migrations.
      */
