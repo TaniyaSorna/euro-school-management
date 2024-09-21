@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-use App\Http\Controllers\Backend\Admin\Auth\LoginController as AdminLoginController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\Admin\DashboardController;
 use App\Http\Controllers\Backend\Admin\AdminManagement\AdminController;
+use App\Http\Controllers\Backend\Admin\Auth\LoginController as AdminLoginController;
 
 Route::get('/', function () {
     return view('welcome');
