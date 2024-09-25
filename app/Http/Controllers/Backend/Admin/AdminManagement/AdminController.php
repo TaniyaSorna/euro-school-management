@@ -13,11 +13,11 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('admin');
-        $this->middleware('permission:admin-list|admin-create|admin-edit|admin-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:admin-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:admin-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:admin-delete', ['only' => ['destroy']]);
-        $this->middleware('permission:admin-status', ['only' => ['status']]);
+        // $this->middleware('permission:admin-list|admin-create|admin-edit|admin-delete', ['only' => ['index', 'show']]);
+        // $this->middleware('permission:admin-create', ['only' => ['create', 'store']]);
+        // $this->middleware('permission:admin-edit', ['only' => ['edit', 'update']]);
+        // $this->middleware('permission:admin-delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:admin-status', ['only' => ['status']]);
     }
 
     use DetailsCommonDataTrait;
@@ -56,6 +56,7 @@ class AdminController extends Controller
         $admin->password = $req->password;
         $admin->created_by = auth()->guard('admin')->user()->id;
         $admin->save();
+        $admin->assignRole($admin->role->name);
         return redirect()->route('am.admin.index')->withStatus(__('Admin updated successfully'));
     }
 
@@ -101,6 +102,7 @@ class AdminController extends Controller
         }
         $admin->updated_by = auth()->guard('admin')->user()->id;
         $admin->update();
+        $admin->syncRoles($admin->role->name);
         return redirect()->route('am.admin.index')->withStatus(__('Admin updated successfully'));
     }
 
