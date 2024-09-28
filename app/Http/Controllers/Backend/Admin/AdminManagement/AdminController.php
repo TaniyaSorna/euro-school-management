@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Backend\Admin\AdminManagement;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\AdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\AdminRequest;
 use App\Http\Traits\DetailsCommonDataTrait;
 
 class AdminController extends Controller
@@ -35,7 +36,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.admin_management.admin.create');
+        $data['roles'] = Role::latest()->get();
+        return view('backend.admin.admin_management.admin.create', $data);
     }
 
     /**

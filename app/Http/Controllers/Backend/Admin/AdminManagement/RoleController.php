@@ -65,13 +65,13 @@ class RoleController extends Controller
     // /**
     //  * Display the specified resource.
     //  */
-    // public function show(string $id)
-    // {
-    //     // $data = Role::with(['permissions', 'created_user', 'updated_user'])->findOrFail($id);
-    //     // $this->simpleColumnData($data);
-    //     // $data->permissionNames = $data->permissions->pluck('name')->implode(' | ');
-    //     // return response()->json($data);
-    // }
+    public function show(string $id)
+    {
+        // $data = Role::with(['permissions', 'created_user', 'updated_user'])->findOrFail($id);
+        // $this->simpleColumnData($data);
+        // $data->permissionNames = $data->permissions->pluck('name')->implode(' | ');
+        // return response()->json($data);
+    }
 
     /**
      * Show the form for editing the specified resource.
