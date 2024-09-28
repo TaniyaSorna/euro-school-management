@@ -26,7 +26,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td>{{ timeFormat($role->created_at) }}</td>
-                                    <td>{{ c_user_name($role->created_admin) }}</td>
+                                    <td>{{ creater_name($role->created_admin) }}</td>
 
                                     <td class="text-center">
                                         <div class="btn-group">
