@@ -25,12 +25,12 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $data['roles'] = Role::with(['permissions', 'created_admin'])->latest()->get();
-        // ->each(function ($role) {
-        //     $permissionNames = $role->permissions->pluck('name')->implode(' | ');
-        //     $role->permissionNames = $permissionNames;
-        //     return $role;
-        // });
+        $data['roles'] = Role::with(['permissions', 'created_admin'])->latest()->get()
+            ->each(function ($role) {
+                $permissionNames = $role->permissions->pluck('name')->implode(' | ');
+                $role->permissionNames = $permissionNames;
+                return $role;
+            });
         return view('backend.admin.admin_management.role.index', $data);
     }
 
