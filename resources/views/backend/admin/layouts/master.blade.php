@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'Admin -Dashboard')</title>
-     <!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" href="{{ asset('backend/admin/assets/img/kaiadmin/favicon.ico') }}" type="image/x-icon" />
     <!-- Fonts and icons -->
     <script src="{{ asset('backend/admin/assets/js/plugin/webfont/webfont.min.js') }}"></script>
@@ -38,7 +38,7 @@
     @stack('css_links')
     <link rel="stylesheet" href="{{ asset('backend/admin/assets/css/kaiadmin.min.css') }}" />
     {{-- Custom CSS   --}}
-    <link rel="stylesheet" href="{{ asset('backend/admin/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/admin/css/custom.css') }}">
     @stack('css')
 
     <!-- Scripts -->
@@ -107,6 +107,7 @@
 <!--   Core JS Files   -->
 <script src="{{ asset('backend/admin/assets/js/core/jquery-3.7.1.min.js') }}"></script>
 <!-- Kaiadmin JS -->
+<script src="{{ asset('backend/admin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 <script src="{{ asset('backend/admin/assets/js/kaiadmin.min.js') }}"></script>
 @stack('js_links')
 <script src="{{ asset('backend/admin/js/custom.js') }}"></script>
